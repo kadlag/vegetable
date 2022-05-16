@@ -21,8 +21,10 @@ class Filters extends BaseConfig
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
 		'auth'     => Auth::class,
+        // 'authback'     => Authback::class,
 	];
 
+    
     /**
      * List of filter aliases that are always
      * applied before and after every request.

@@ -3,10 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\User;
+use App\Models\Farmer;
 
-class UserController extends BaseController
-{private $user;
+class FarmerController extends BaseController
+{private $farmer;
 	private $session;
 	/**
 	 * constructor
@@ -14,16 +14,16 @@ class UserController extends BaseController
 	public function __construct()
 	{
 		helper(['form', 'url', 'session']);
-		$this->user = new User();
+		$this->farmer = new farmer();
 		$this->session = session();
 	}
 
 	/**
 	 * register
 	 */
-	public function register()
+	public function registerback()
 	{
-		return view('register');
+		return view('registerback');
 	}
 
 	/**
@@ -38,26 +38,26 @@ class UserController extends BaseController
 		]);
 
 		if (!$inputs) {
-			return view('register', [
+			return view('registerback', [
 				'validation' => $this->validator
 			]);
 		}
 
-		$this->user->save([
+		$this->farmer->save([
 			'name' => $this->request->getVar('name'),
 			'email'  => $this->request->getVar('email'),
 			'password'  => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
 		]);
 		session()->setFlashdata('success', 'Success! registration completed.');
-		return redirect()->to(site_url('/register'));
+		return redirect()->to(site_url('/registerback'));
 	}
 
 	/**
 	 * login form
 	 */
-	public function login()
+	public function loginback()
 	{
-		return view('login');
+		return view('loginback');
 	}
 
 	/**
@@ -71,7 +71,7 @@ class UserController extends BaseController
 		]);
 
 		if (!$inputs) {
-			return view('login', [
+			return view('loginback', [
 				'validation' => $this->validator
 			]);
 		}
@@ -79,40 +79,40 @@ class UserController extends BaseController
 		$email = $this->request->getVar('email');
 		$password = $this->request->getVar('password');
 
-		$user = $this->user->where('email', $email)->first();
+		$farmer = $this->farmer->where('email', $email)->first();
 
-		if ($user) {
+		if ($farmer) {
 
-			$pass = $user['password'];
+			$pass = $farmer['password'];
 			$authPassword = password_verify($password, $pass);
 
 			if ($authPassword) {
 				$sessionData = [
-					'id' => $user['id'],
-					'name' => $user['name'],
-					'email' => $user['email'],
+					'id' => $farmer['id'],
+					'name' => $farmer['name'],
+					'email' => $farmer['email'],
 					'loggedIn' => true,
 				];
 
 				$this->session->set($sessionData);
-				return redirect()->to('frontpage');
+				return redirect()->to('dashboard');
 			}
 
 			session()->setFlashdata('failed', 'Failed! incorrect password');
-			return redirect()->to(site_url('/login'));
+			return redirect()->to(site_url('/loginback'));
 		}
 
 		session()->setFlashdata('failed', 'Failed! incorrect email');
-		return redirect()->to(site_url('/login'));
+		return redirect()->to(site_url('/loginback'));
 	}
 
 	/**
 	 * Dashboard
 	 * @param NA
 	 */
-	public function frontpage()
+	public function dashboard()
 	{
-		return view('frontpage');
+		return view('dashboard');
 	}
 
 	/**
@@ -123,8 +123,7 @@ class UserController extends BaseController
 	{
 		$session = session();
 		$session->destroy();
-		return redirect()->to('login');
+		return redirect()->to('loginback');
 	}
 }
   
-

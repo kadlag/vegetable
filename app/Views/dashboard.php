@@ -1,47 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>User Registration and Login in Codeigniter 4</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
 
-<?php $session = \Config\Services::session(); ?>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid ps-5">
-            <a class="navbar-brand" href="#">Programming Fields</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item  pe-5">
-                        <a class="nav-link active" aria-current="page">Welcome: <?= $session->get('name'); ?> </a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?= base_url('logout') ?>">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-    <div class="container-fluid py-4">
-        <div class="row mt-4">
-            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 m-auto">
-                <h4 class="text-center"> Dashboard </h4>    
-            </div>
-        </div>
+       
+    <!-- menu section starts -->
+    <div class="menu text-center">
+    <div class="wrapper">
+      <ul>
+          <li> <a href="index.php">  Home</a></li>
+          <li> <a href="manage-admin.php"> Admin</a></li>
+          <li> <a href="manage-category.php">Category</a></li>
+          <li> <a href="manage-vegetable.php"> Vegetable-Fruit</a></li>
+          <li> <a href="manage-order.php"> Order</a></li>
+          <li> <a href="logout.php"> Logout</a></li>
+      </ul>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-</body>
+   
+</div>
 
+    <!-- menu section ends -->
+    <div class="main-content">
+    <div class="wrapper">
+     <h1>Dashboard</h1>
+
+     <br> <br>
+
+     <div class="col-4 text-center">
+
+     Categories
+      </div>
+
+
+      <div class="col-4 text-center">
+      Vegetable-Fruit
+      </div>
+
+      <div class="col-4 text-center">
+       
+          Total Orders
+      </div>
+
+
+      
+
+
+      <div class="col-4 text-center">
+
+      
+          Revenue Generated
+      </div>
+
+      <div class="clearfix"></div>
+    </div>
+    </div>
+    <!-- main section ends-->
+    
+
+      <!-- Footer section starts -->
+<div class="footer">
+    <div class="wrapper">
+         <p class="text-center">2022 All rights reserved,Vegetable & Fruit House Developed By- <a href="#"> Sakshi & Gauri </a> </p>
+    </div>
+    </div>
+    <!-- Footer section ends -->
+    </body>
+</html>
+</body>
 </html>

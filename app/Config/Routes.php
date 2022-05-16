@@ -28,10 +28,23 @@ $routes->get('register', 'UserController::register');
 $routes->post('register', 'UserController::create');
 $routes->get('login', 'UserController::login');
 $routes->post('login', 'UserController::loginValidate');
-$routes->get('dashboard', 'UserController::dashboard', ['filter' => 'auth']);
+$routes->get('frontpage', 'UserController::frontpage', ['filter' => 'auth']);
 $routes->get('logout', 'UserController::logout');
 
 
+$routes->get('registerback', 'FarmerController::registerback');
+$routes->post('registerback', 'FarmerController::create');
+$routes->get('loginback', 'FarmerController::loginback');
+$routes->post('loginback', 'FarmerController::loginValidate');
+$routes->get('dashboard', 'FarmerController::dashboard', ['filter' => 'auth']);
+$routes->get('logout', 'FarmerController::logout');
+
+$routes->get('/', 'CategoryController::index');
+$routes->get('category/create', 'CategoryController::create');
+$routes->post('category/store', 'CategoryController::store');
+$routes->get('category/edit/(:num)', 'CategoryController::edit/$1');
+$routes->post('category/update/(:num)', 'CategoryController::update/$1');
+$routes->get('category/delete/(:num)', 'CategoryController::delete/$1');
 /*
  * --------------------------------------------------------------------
  * Route Definitions
